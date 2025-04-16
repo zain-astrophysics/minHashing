@@ -6,24 +6,27 @@ import csv
 with open('reviews.csv', 'r', encoding='utf-8') as f:
     reader = csv.DictReader(f)
 
-  # Convert reviews to a list and handle float values
-    reviews = [row.get('Review Text', '') for row in reader]
-    reviews = [str(review) if isinstance(review, float) else review for review in reviews]
-    #cloth_data = reviews['Review Text']
-    #cloth_ID = reviews['Clothing ID']
+    for row in reader:
+        # Extract review text and clothing ID from the current row
+        review_text = row.get('Review Text', '')
+        cloth_id = row.get('Clothing ID', '')
 
-    for review in reviews:
-        cloth_data = review['Review Text']
-        cloth_ID = review['Clothing ID']
+        # Ensure that we have both the review text and clothing ID
+        if not review_text or not cloth_id:
+            continue
 
-        if not review_text or not clothing_id:
+        # Skip reviews that are float (invalid data for text reviews)
+        if isinstance(review_text, float):
             continue
 
         try:
-            if int(cloth_ID) > 25:  # Filter reviews with Clothing ID > 25
-                reivew_text = cloth_data.replace('\t', ' ').strip()
-                print(f"{review_text}")
+            # Filter reviews where the Clothing ID is greater than 25
+            if int(cloth_id) > 25:
+                # Clean the review text by removing tabs and extra spaces
+                review_text = review_text.replace('\t', ' ').strip()
+                print(f"{review_text}")  # Output the cleaned review text
         except ValueError:
             continue  # Skip rows with invalid clothing ID
+
 
     
