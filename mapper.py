@@ -16,6 +16,6 @@ with open('reviews.csv', 'r', encoding='utf-8') as f:
         try:
             if int(clothing_id) > 25:
                 review_text = review_text.replace('\t', ' ').strip()
-                print(f"{clothing_id}\t{review_text}")
+                print(f"{review_text}")
         except ValueError:
             continue  # Skip rows with invalid numbers
