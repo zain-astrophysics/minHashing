@@ -13,8 +13,8 @@ with open('reviews.csv', 'r', encoding='utf-8') as f:
     #cloth_ID = reviews['Clothing ID']
 
     for review in reviews:
-        cloth_data = reviews['Review Text']
-        cloth_ID = reviews['Clothing ID']
+        cloth_data = review['Review Text']
+        cloth_ID = review['Clothing ID']
 
         if not review_text or not clothing_id:
             continue
