@@ -1,4 +1,4 @@
-mapred streaming -files /home/zainabbas199166/minHashing/mapper.py, /home/zainabbas199166/minHashing/reducer.py \
+mapred streaming -files /home/zainabbas199166/minHashing/mapper.py,/home/zainabbas199166/minHashing/reducer.py \
                  -mapper  /home/zainabbas199166/minHashing/mapper.py \
                  -reducer /home/zainabbas199166/minHashing/reducer.py \
                  -input  /user/zainabbas199166/reviews \
