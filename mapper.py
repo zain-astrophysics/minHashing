@@ -17,6 +17,7 @@ with open('reviews.csv', 'r', encoding='utf-8') as f:
 
         # Skip reviews that are float (invalid data for text reviews)
         if isinstance(review_text, float):
+            review_text = str(review_text)
             continue
 
         try:
