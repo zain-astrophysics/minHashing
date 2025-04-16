@@ -25,9 +25,11 @@ with open('reviews.csv', 'r', encoding='utf-8') as f:
             if int(cloth_id) > 25:
                 # Clean the review text by removing tabs and extra spaces
                 review_text = review_text.replace('\t', ' ').strip()
-                print(f"{review_text}")  # Output the cleaned review text
+                print(f"{cloth_id}\t {review_text}")  # Output the cleaned review text
         except ValueError:
             continue  # Skip rows with invalid clothing ID
+
+
 
 
     
