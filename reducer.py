@@ -15,6 +15,11 @@ for line in sys.stdin:
     line = line.strip()
     if not line:
         continue
+    try:
+      clothing_id, review_text = line.split('\t', 1)  # assuming tab-separated values
+    except ValueError:
+        continue  # skip lines that don't have exactly two parts 
+    # Store each review (after processing)
 
     # Store each review (after processing)
     reviews.append(line)
