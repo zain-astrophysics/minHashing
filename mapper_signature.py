@@ -44,7 +44,7 @@ for row in reader:
         # Skip reviews that are float (invalid data for text reviews)
     if isinstance(review_text, float):
        review_text = str(review_text)
-       continues
+       continue
 
     try:
 
@@ -52,7 +52,12 @@ for row in reader:
         if clothing_id > 25:  # Apply filtering condition
                 review_text = review_text.replace('\t', ' ').strip()  # Replace tabs with spaces
                 minhash_values = minhash(review_text)
+                minhash_values_str = ','.join(map(str, minhash_values))
+                output_line = f"{clothing_id}\t{minhash_values_str}\n"
+                # Write output using sys.stdout.write and flush immediately
+                print(output_line)
+                #sys.stdout.flush()  # Force flushing the output immediately 
                 # Output the Review ID and its MinHash signature
-                print(f"{review_text}\t" + ",".join(map(str, minhash_values)))
+                
     except ValueError:
            continue  # Skip invalid clothing IDs
