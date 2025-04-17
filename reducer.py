@@ -22,7 +22,7 @@ for line in sys.stdin:
     # Store each review (after processing)
 
     # Store each review (after processing)
-    reviews.append(line)
+    reviews.append(review_text)
 
 # Convert reviews to sets of words for Jaccard similarity calculation
 review_sets = [set(review.lower().split()) for review in reviews]
