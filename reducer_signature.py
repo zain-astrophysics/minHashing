@@ -21,12 +21,12 @@ for line in sys.stdin:
     minhash_values = list(map(int, minhash_signature.split(',')))  # Convert the MinHash signature to a list of integers
 
  # Assuming you have a way to store the review text (possibly passed along with the MinHash signature)
-    reviews[review_text] = minhash_values  # Store the MinHash signature for the review ID
+    reviews[cloud_id] = minhash_values  # Store the MinHash signature for the review ID
 
 # Compare all pairs of reviews to calculate the MinHash similarity
-for (review_id1, minhash1), (review_id2, minhash2) in itertools.combinations(reviews.items(), 2):
+for (cloud_id1, minhash1), (cloud_id2, minhash2) in itertools.combinations(reviews.items(), 2):
     similarity = minhash_similarity(minhash1, minhash2)
     
     if similarity >= 0.5:  # Only emit pairs with similarity >= 0.5
         # Output the similarity and the two reviews
-        print(f"{similarity:.4f}\t{review_id1}\t{review_id2}")
+        print(f"{similarity:.4f}\t{cloud_id1}\t{cloud_id2}")
